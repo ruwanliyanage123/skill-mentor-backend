@@ -1,4 +1,4 @@
-package com.skillmentor.core.skill_mentor_core;
+package com.skillmentor.core;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

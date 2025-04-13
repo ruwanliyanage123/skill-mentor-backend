@@ -1,4 +1,4 @@
-package com.skillmentor.core.skill_mentor_core;
+package com.skillmentor.core;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
