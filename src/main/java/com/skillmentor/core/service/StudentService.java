@@ -18,4 +18,12 @@ public interface StudentService {
      * @return all students in the system
      */
     public abstract List<StudentDTO> getAllStudents(List<String> firstNames, List<String> lastNames, List<String> emails, List<String> phoneNumbers, List<Integer> ages);
+
+    /**
+     * Get student by id
+     *
+     * @param studentId student id
+     * @return get student id
+     */
+    public abstract StudentDTO getStudentById(Long studentId);
 }

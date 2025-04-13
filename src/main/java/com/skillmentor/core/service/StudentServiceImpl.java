@@ -6,14 +6,15 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class StudentServiceImpl implements StudentService{
+public class StudentServiceImpl implements StudentService {
 
-    private List<StudentDTO> studentDTOS  = new ArrayList<>();
+    private List<StudentDTO> studentDTOS = new ArrayList<>();
 
-    public StudentServiceImpl(){
+    public StudentServiceImpl() {
         studentDTOS.add(new StudentDTO(1L, "Ruwan", "Silva", "ruwan.s@example.com", "0771111001", "Colombo 07", 22));
         studentDTOS.add(new StudentDTO(2L, "Nadun", "Perera", "nadun.p@example.com", "0771111002", "Colombo 07", 22));
         studentDTOS.add(new StudentDTO(3L, "Sahan", "Fernando", "sahan.f@example.com", "0771111003", "Kandy", 23));
@@ -39,11 +40,16 @@ public class StudentServiceImpl implements StudentService{
     @Override
     public List<StudentDTO> getAllStudents(List<String> firstNames, List<String> lastNames, List<String> emails, List<String> phoneNumbers, List<Integer> ages) {
         return studentDTOS.stream()
-                .filter(stu-> firstNames == null || firstNames.isEmpty() || firstNames.contains(stu.getFirstName()))
-                .filter(stu-> lastNames == null || lastNames.isEmpty() || lastNames.contains(stu.getLastName()))
-                .filter(stu-> emails == null || emails.isEmpty() || emails.contains(stu.getEmail()))
-                .filter(stu-> phoneNumbers == null || phoneNumbers.isEmpty() || phoneNumbers.contains(stu.getPhoneNumber()))
-                .filter(stu->ages == null || ages.isEmpty() || ages.contains(stu.getAge()))
+                .filter(stu -> firstNames == null || firstNames.isEmpty() || firstNames.contains(stu.getFirstName()))
+                .filter(stu -> lastNames == null || lastNames.isEmpty() || lastNames.contains(stu.getLastName()))
+                .filter(stu -> emails == null || emails.isEmpty() || emails.contains(stu.getEmail()))
+                .filter(stu -> phoneNumbers == null || phoneNumbers.isEmpty() || phoneNumbers.contains(stu.getPhoneNumber()))
+                .filter(stu -> ages == null || ages.isEmpty() || ages.contains(stu.getAge()))
                 .collect(Collectors.toList());
+    }
+
+    public StudentDTO getStudentById(Long studentId) {
+        final Optional<StudentDTO> studentDTOOptional = studentDTOS.stream().filter(stu -> stu.getStudentId().equals(studentId)).findFirst();
+        return studentDTOOptional.orElse(null);
     }
 }
