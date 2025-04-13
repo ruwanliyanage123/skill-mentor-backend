@@ -1,7 +1,7 @@
 package com.skillmentor.core.dto;
 
 public class StudentDTO {
-    private Long studentId;
+    private Integer studentId;
     private String firstName;
     private String lastName;
     private String email;
@@ -9,7 +9,7 @@ public class StudentDTO {
     private String address;
     private Integer age;
 
-    public StudentDTO(Long studentId, String firstName, String lastName, String email, String phoneNumber, String address, Integer age) {
+    public StudentDTO(Integer studentId, String firstName, String lastName, String email, String phoneNumber, String address, Integer age) {
         this.studentId = studentId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -23,11 +23,11 @@ public class StudentDTO {
 
     }
 
-    public Long getStudentId() {
+    public Integer getStudentId() {
         return studentId;
     }
 
-    public void setStudentId(Long studentId) {
+    public void setStudentId(Integer studentId) {
         this.studentId = studentId;
     }
 

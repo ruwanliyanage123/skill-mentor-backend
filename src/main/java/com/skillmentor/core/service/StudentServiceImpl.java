@@ -4,7 +4,6 @@ import com.skillmentor.core.dto.StudentDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -48,8 +47,27 @@ public class StudentServiceImpl implements StudentService {
                 .collect(Collectors.toList());
     }
 
+    @Override
     public StudentDTO getStudentById(Long studentId) {
         final Optional<StudentDTO> studentDTOOptional = studentDTOS.stream().filter(stu -> stu.getStudentId().equals(studentId)).findFirst();
         return studentDTOOptional.orElse(null);
+    }
+
+    @Override
+    public StudentDTO createStudent(StudentDTO studentDTO) {
+        studentDTOS.add(studentDTO);
+        return studentDTO;
+    }
+
+    public StudentDTO updateStudent(StudentDTO studentDTO){
+        final StudentDTO prevStudent = studentDTOS.get(studentDTO.getStudentId());
+        prevStudent.setAddress(studentDTO.getAddress());
+        prevStudent.setAge(studentDTO.getAge());
+        prevStudent.setEmail(studentDTO.getEmail());
+        prevStudent.setFirstName(studentDTO.getFirstName());
+        prevStudent.setLastName(studentDTO.getLastName());
+        prevStudent.setPhoneNumber(studentDTO.getPhoneNumber());
+        studentDTOS.add(studentDTO.getStudentId(), prevStudent);
+        return studentDTO;
     }
 }

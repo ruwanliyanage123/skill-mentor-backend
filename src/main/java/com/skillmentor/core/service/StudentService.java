@@ -26,4 +26,21 @@ public interface StudentService {
      * @return get student id
      */
     public abstract StudentDTO getStudentById(Long studentId);
+
+
+    /**
+     * Create student
+     *
+     * @param studentDTO student dto
+     * @return created student
+     */
+    public abstract StudentDTO createStudent(StudentDTO studentDTO);
+
+    /**
+     * To update student
+     *
+     * @param studentDTO update student
+     * @return updated student
+     */
+    public abstract StudentDTO updateStudent(StudentDTO studentDTO);
 }
