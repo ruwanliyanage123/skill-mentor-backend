@@ -7,9 +7,9 @@ public class StudentDTO {
     private String email;
     private String phoneNumber;
     private String address;
-    private int age;
+    private Integer age;
 
-    public StudentDTO(Long studentId, String firstName, String lastName, String email, String phoneNumber, String address, int age) {
+    public StudentDTO(Long studentId, String firstName, String lastName, String email, String phoneNumber, String address, Integer age) {
         this.studentId = studentId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -71,11 +71,11 @@ public class StudentDTO {
         this.address = address;
     }
 
-    public int getAge() {
+    public Integer getAge() {
         return this.age;
     }
 
-    public void setAge(int age) {
+    public void setAge(Integer age) {
         this.age = age;
     }
 }

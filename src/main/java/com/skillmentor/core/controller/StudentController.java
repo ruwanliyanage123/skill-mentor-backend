@@ -7,8 +7,10 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.management.Query;
 import java.util.List;
 
 @RestController()
@@ -18,8 +20,14 @@ public class StudentController {
     private StudentService studentService;
 
     @GetMapping()
-    public ResponseEntity<List<StudentDTO>> getAllStudents(){
-        final List<StudentDTO> studentDTOList = studentService.getAllStudents();
+    public ResponseEntity<List<StudentDTO>> getAllStudents(
+            @RequestParam(required = false) List<String> firstNames,
+            @RequestParam(required = false) List<String> lastNames,
+            @RequestParam(required = false) List<String> emails,
+            @RequestParam(required = false) List<String> phoneNumbers,
+            @RequestParam(required = false) List<Integer> ages
+    ) {
+        final List<StudentDTO> studentDTOList = studentService.getAllStudents(firstNames, lastNames, emails, phoneNumbers, ages);
         return new ResponseEntity<>(studentDTOList, HttpStatus.OK);
     }
 

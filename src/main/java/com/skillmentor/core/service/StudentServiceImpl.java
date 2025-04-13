@@ -4,7 +4,9 @@ import com.skillmentor.core.dto.StudentDTO;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class StudentServiceImpl implements StudentService{
@@ -35,7 +37,13 @@ public class StudentServiceImpl implements StudentService{
     }
 
     @Override
-    public List<StudentDTO> getAllStudents() {
-        return studentDTOS;
+    public List<StudentDTO> getAllStudents(List<String> firstNames, List<String> lastNames, List<String> emails, List<String> phoneNumbers, List<Integer> ages) {
+        return studentDTOS.stream()
+                .filter(stu-> firstNames == null || firstNames.isEmpty() || firstNames.contains(stu.getFirstName()))
+                .filter(stu-> lastNames == null || lastNames.isEmpty() || lastNames.contains(stu.getLastName()))
+                .filter(stu-> emails == null || emails.isEmpty() || emails.contains(stu.getEmail()))
+                .filter(stu-> phoneNumbers == null || phoneNumbers.isEmpty() || phoneNumbers.contains(stu.getPhoneNumber()))
+                .filter(stu->ages == null || ages.isEmpty() || ages.contains(stu.getAge()))
+                .collect(Collectors.toList());
     }
 }
