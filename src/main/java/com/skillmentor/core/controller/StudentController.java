@@ -3,10 +3,13 @@ package com.skillmentor.core.controller;
 import com.skillmentor.core.dto.StudentDTO;
 import com.skillmentor.core.service.StudentService;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
+@Validated
 @RestController()
 @RequestMapping(value = "/student")
 public class StudentController {
@@ -29,14 +33,14 @@ public class StudentController {
             @RequestParam(required = false) List<String> lastNames,
             @RequestParam(required = false) List<String> emails,
             @RequestParam(required = false) List<String> phoneNumbers,
-            @RequestParam(required = false) List<Integer> ages
+            @RequestParam(required = false) @Size(min = 18, max = 30) List<Integer> ages
     ) {
         final List<StudentDTO> studentDTOList = studentService.getAllStudents(firstNames, lastNames, emails, phoneNumbers, ages);
         return new ResponseEntity<>(studentDTOList, HttpStatus.OK);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<StudentDTO> getStudentById(@PathVariable("id") @Size(min = 18, max = 30) Long id){
+    public ResponseEntity<StudentDTO> getStudentById(@PathVariable("id") @Min(10) @Max(15) Long id){
         final StudentDTO studentDTO = studentService.getStudentById(id);
         return new ResponseEntity<>(studentDTO, HttpStatus.OK);
     }
