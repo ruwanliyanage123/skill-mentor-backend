@@ -1,6 +1,7 @@
-package com.skillmentor.core.service;
+package com.skillmentor.core.service.impl;
 
 import com.skillmentor.core.dto.StudentDTO;
+import com.skillmentor.core.service.StudentService;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

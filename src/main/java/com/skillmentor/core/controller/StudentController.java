@@ -2,6 +2,8 @@ package com.skillmentor.core.controller;
 
 import com.skillmentor.core.dto.StudentDTO;
 import com.skillmentor.core.service.StudentService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.Size;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,19 +36,19 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<StudentDTO> getStudentById(@PathVariable("id") Long id){
+    public ResponseEntity<StudentDTO> getStudentById(@PathVariable("id") @Size(min = 18, max = 30) Long id){
         final StudentDTO studentDTO = studentService.getStudentById(id);
         return new ResponseEntity<>(studentDTO, HttpStatus.OK);
     }
 
     @PostMapping()
-    public ResponseEntity<StudentDTO> createStudent(@RequestBody StudentDTO studentDTO){
+    public ResponseEntity<StudentDTO> createStudent(@RequestBody @Valid StudentDTO studentDTO){
         final StudentDTO student = studentService.createStudent(studentDTO);
         return new ResponseEntity<>(student, HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<StudentDTO> updateStudent(@RequestBody StudentDTO studentDTO){
+    public ResponseEntity<StudentDTO> updateStudent(@RequestBody @Valid StudentDTO studentDTO){
         final StudentDTO student = studentService.updateStudent(studentDTO);
         return new ResponseEntity<>(student, HttpStatus.OK);
     }
