@@ -6,22 +6,12 @@ import jakarta.validation.constraints.NotBlank;
 import org.springframework.lang.NonNull;
 
 public class StudentDTO {
-    @NonNull
     private Integer studentId;
-    @NonNull
-    @NotBlank
     private String firstName;
-    @NonNull
     private String lastName;
-    @NonNull
-    @Email
     private String email;
-    @NonNull
     private String phoneNumber;
-    @NonNull
     private String address;
-    @NonNull
-    @Min(value = 18, message = "Age must be greater than 0")
     private Integer age;
 
     public StudentDTO(Integer studentId, String firstName, String lastName, String email, String phoneNumber, String address, Integer age) {

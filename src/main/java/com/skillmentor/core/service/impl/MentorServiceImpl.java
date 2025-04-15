@@ -73,7 +73,7 @@ public class MentorServiceImpl implements MentorService {
 
     @Override
     public MentorDTO createMentor(MentorDTO mentorDTO) {
-        mentorRepository.save(MentorDTOEntityMapper.map(mentorDTO));
-        return mentorDTO;
+        MentorEntity mentorEntity = mentorRepository.save(MentorDTOEntityMapper.map(mentorDTO));
+        return MentorDTOEntityMapper.map(mentorEntity);
     }
 }

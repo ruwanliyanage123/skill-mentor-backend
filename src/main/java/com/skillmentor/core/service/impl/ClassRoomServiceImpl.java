@@ -60,7 +60,7 @@ public class ClassRoomServiceImpl implements ClassRoomService {
 
     @Override
     public ClassRoomDTO createClassRoom(ClassRoomDTO classRoomDTO) {
-        classRoomRepository.save(ClassRoomDTOEntityMapper.map(classRoomDTO));
-        return classRoomDTO;
+        final ClassRoomEntity classRoomEntity = classRoomRepository.save(ClassRoomDTOEntityMapper.map(classRoomDTO));
+        return ClassRoomDTOEntityMapper.map(classRoomEntity);
     }
 }
