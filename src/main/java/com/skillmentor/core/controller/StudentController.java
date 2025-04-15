@@ -40,7 +40,7 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<StudentDTO> getStudentById(@PathVariable("id") @Min(10) @Max(15) Long id){
+    public ResponseEntity<StudentDTO> getStudentById(@PathVariable("id") @Min(10) @Max(15) Integer id){
         final StudentDTO studentDTO = studentService.getStudentById(id);
         return new ResponseEntity<>(studentDTO, HttpStatus.OK);
     }

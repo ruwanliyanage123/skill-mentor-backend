@@ -34,7 +34,7 @@ public interface StudentService {
      * @param studentId the unique ID of the student
      * @return the matching {@link StudentDTO}, or {@code null} if not found
      */
-    StudentDTO getStudentById(Long studentId);
+    StudentDTO getStudentById(Integer studentId);
 
     /**
      * Creates a new student record.
