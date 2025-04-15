@@ -1,7 +1,11 @@
 package com.skillmentor.core.service.impl;
 
 import com.skillmentor.core.dto.StudentDTO;
+import com.skillmentor.core.entity.StudentEntity;
+import com.skillmentor.core.mapper.StudentDTOEntityMapper;
+import com.skillmentor.core.repository.StudentRepository;
 import com.skillmentor.core.service.StudentService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -13,6 +17,8 @@ import java.util.stream.Collectors;
 public class StudentServiceImpl implements StudentService {
 
     private List<StudentDTO> studentDTOS = new ArrayList<>();
+    @Autowired
+    private StudentRepository studentRepository;
 
     public StudentServiceImpl() {
         studentDTOS.add(new StudentDTO(1, "Ruwan", "Silva", "ruwan.s@example.com", "0771111001", "Colombo 07", 22));
@@ -56,7 +62,8 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public StudentDTO createStudent(StudentDTO studentDTO) {
-        studentDTOS.add(studentDTO);
+        final StudentEntity studentEntity = StudentDTOEntityMapper.map(studentDTO);
+        studentRepository.save(studentEntity);
         return studentDTO;
     }
 

@@ -1,7 +1,10 @@
 package com.skillmentor.core.service.impl;
 
 import com.skillmentor.core.dto.MentorDTO;
+import com.skillmentor.core.mapper.MentorDTOEntityMapper;
+import com.skillmentor.core.repository.MentorRepository;
 import com.skillmentor.core.service.MentorService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -11,20 +14,12 @@ import java.util.stream.Collectors;
 
 @Service
 public class MentorServiceImpl implements MentorService {
+    @Autowired
+    private MentorRepository mentorRepository;
 
     private final List<MentorDTO> mentorDto = new ArrayList<>();
 
     public MentorServiceImpl() {
-        mentorDto.add(new MentorDTO(1, "Nuwan", "Fernando", "Colombo", "nuwan.f@example.com", "Mr.", "Software Engineer", "Java", "BSc in IT", 101));
-        mentorDto.add(new MentorDTO(2, "Shehani", "Perera", "Kandy", "shehani.p@example.com", "Ms.", "Senior Developer", "Spring Boot", "MSc in Computer Science", 102));
-        mentorDto.add(new MentorDTO(3, "Tharindu", "Silva", "Galle", "tharindu.s@example.com", "Mr.", "DevOps Engineer", "CI/CD", "BEng in Software", 103));
-        mentorDto.add(new MentorDTO(4, "Chamara", "Jayasinghe", "Matara", "chamara.j@example.com", "Dr.", "AI Specialist", "Machine Learning", "PhD in AI", 104));
-        mentorDto.add(new MentorDTO(5, "Kavindi", "Dissanayake", "Negombo", "kavindi.d@example.com", "Ms.", "UI/UX Designer", "Design Thinking", "BA in Design", 105));
-        mentorDto.add(new MentorDTO(6, "Ishara", "Pathirana", "Colombo", "ishara.p@example.com", "Mr.", "Backend Developer", "Node.js", "BSc in CS", 101));
-        mentorDto.add(new MentorDTO(7, "Sahan", "Madushanka", "Kurunegala", "sahan.m@example.com", "Mr.", "Data Analyst", "SQL", "BSc in Mathematics", 106));
-        mentorDto.add(new MentorDTO(8, "Dinithi", "Wickramasinghe", "Jaffna", "dinithi.w@example.com", "Ms.", "Cybersecurity Expert", "Network Security", "MSc in Cybersecurity", 107));
-        mentorDto.add(new MentorDTO(9, "Ravindu", "Senanayake", "Colombo", "ravindu.s@example.com", "Mr.", "Frontend Developer", "React", "BSc in IT", 102));
-        mentorDto.add(new MentorDTO(10, "Harsha", "Gunasekara", "Kandy", "harsha.g@example.com", "Dr.", "Database Architect", "PostgreSQL", "PhD in Data Science", 104));
     }
 
     @Override
@@ -80,12 +75,7 @@ public class MentorServiceImpl implements MentorService {
 
     @Override
     public MentorDTO createMentor(MentorDTO mentorDTO) {
-        int newId = mentorDto.stream()
-                .mapToInt(MentorDTO::getMentorId)
-                .max()
-                .orElse(0) + 1;
-        mentorDTO.setMentorId(newId);
-        mentorDto.add(mentorDTO);
+        mentorRepository.save(MentorDTOEntityMapper.map(mentorDTO));
         return mentorDTO;
     }
 }
