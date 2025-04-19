@@ -1,18 +1,20 @@
 package com.skillmentor.core.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "class_room")
 public class ClassRoomEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "class_room_id")
@@ -23,7 +25,9 @@ public class ClassRoomEntity {
     private Double sessionFee;
     @Column(name = "enrolled_student_count")
     private Integer enrolledStudentCount;
-    @JoinColumn(name = "mentor_id", referencedColumnName = "mentorId")
+    @ManyToOne()
+    @JoinColumn(name = "mentor_id", referencedColumnName = "mentor_id")
+    @JsonManagedReference
     private MentorEntity mentorEntity;
 
     public ClassRoomEntity(Integer classRoomId, String name, Double sessionFee, Integer enrolledStudentCount, MentorEntity mentorEntity) {

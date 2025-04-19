@@ -1,5 +1,7 @@
 package com.skillmentor.core.dto;
 
+import java.util.List;
+
 public class MentorDTO {
     private Integer mentorId;
     private String firstName;
@@ -10,8 +12,13 @@ public class MentorDTO {
     private String profession;
     private String subject;
     private String qualification;
+    private List<ClassRoomDTO> classRoomDTOList;
 
-    public MentorDTO(Integer mentorId, String firstName, String lastName, String address, String email, String title, String profession, String subject, String qualification) {
+    public MentorDTO() {}
+
+    public MentorDTO(Integer mentorId, String firstName, String lastName, String address, String email,
+                     String title, String profession, String subject, String qualification,
+                     List<ClassRoomDTO> classRoomDTOList) {
         this.mentorId = mentorId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -21,9 +28,7 @@ public class MentorDTO {
         this.profession = profession;
         this.subject = subject;
         this.qualification = qualification;
-    }
-
-    public MentorDTO() {
+        this.classRoomDTOList = classRoomDTOList;
     }
 
     public Integer getMentorId() {
@@ -96,5 +101,13 @@ public class MentorDTO {
 
     public void setQualification(String qualification) {
         this.qualification = qualification;
+    }
+
+    public List<ClassRoomDTO> getClassRoomDTOList() {
+        return classRoomDTOList;
+    }
+
+    public void setClassRoomDTOList(List<ClassRoomDTO> classRoomDTOList) {
+        this.classRoomDTOList = classRoomDTOList;
     }
 }

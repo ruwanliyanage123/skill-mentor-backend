@@ -5,54 +5,30 @@ public class ClassRoomDTO {
     private String name;
     private Double sessionFee;
     private Integer enrolledStudentCount;
-    private MentorDTO mentorDTO;
+    private Integer mentorId;
 
-    public ClassRoomDTO(Integer classRoomId, String name, Double sessionFee, Integer enrolledStudentCount, MentorDTO mentorDTO) {
+    public ClassRoomDTO() {}
+
+    public ClassRoomDTO(Integer classRoomId, String name, Double sessionFee, Integer enrolledStudentCount, Integer mentorId) {
         this.classRoomId = classRoomId;
         this.name = name;
         this.sessionFee = sessionFee;
         this.enrolledStudentCount = enrolledStudentCount;
+        this.mentorId = mentorId;
     }
 
-    public ClassRoomDTO() {
-    }
+    public Integer getClassRoomId() { return classRoomId; }
+    public void setClassRoomId(Integer classRoomId) { this.classRoomId = classRoomId; }
 
-    public Integer getClassRoomId() {
-        return classRoomId;
-    }
+    public String getName() { return name; }
+    public void setName(String name) { this.name = name; }
 
-    public void setClassRoomId(Integer classRoomId) {
-        this.classRoomId = classRoomId;
-    }
+    public Double getSessionFee() { return sessionFee; }
+    public void setSessionFee(Double sessionFee) { this.sessionFee = sessionFee; }
 
-    public String getName() {
-        return name;
-    }
+    public Integer getEnrolledStudentCount() { return enrolledStudentCount; }
+    public void setEnrolledStudentCount(Integer enrolledStudentCount) { this.enrolledStudentCount = enrolledStudentCount; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Double getSessionFee() {
-        return sessionFee;
-    }
-
-    public void setSessionFee(Double sessionFee) {
-        this.sessionFee = sessionFee;
-    }
-
-    public Integer getEnrolledStudentCount() {
-        return enrolledStudentCount;
-    }
-    public void setEnrolledStudentCount(Integer enrolledStudentCount) {
-        this.enrolledStudentCount = enrolledStudentCount;
-    }
-
-    public MentorDTO getMentorDTO() {
-        return mentorDTO;
-    }
-
-    public void setMentorDTO(MentorDTO mentorDTO) {
-        this.mentorDTO = mentorDTO;
-    }
+    public Integer getMentorId() { return mentorId; }
+    public void setMentorId(Integer mentorId) { this.mentorId = mentorId; }
 }

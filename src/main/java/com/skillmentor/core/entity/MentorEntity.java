@@ -1,11 +1,15 @@
 package com.skillmentor.core.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+
+import java.util.List;
 
 @Entity
 @Table(name = "mentor")
@@ -30,8 +34,9 @@ public class MentorEntity {
     private String subject;
     @Column(name = "qualification")
     private String qualification;
-    @Column(name = "course_id")
-    private Integer courseId;
+    @OneToMany(mappedBy = "mentorEntity")
+    @JsonBackReference
+    private List<ClassRoomEntity> classRoomEntityList;
 
     public MentorEntity(Integer mentorId, String firstName, String lastName, String address, String email, String title, String profession, String subject, String qualification) {
         this.mentorId = mentorId;
@@ -118,5 +123,13 @@ public class MentorEntity {
 
     public void setQualification(String qualification) {
         this.qualification = qualification;
+    }
+
+    public void setClassRoomEntityList(List<ClassRoomEntity> classRoomEntityList) {
+        this.classRoomEntityList = classRoomEntityList;
+    }
+
+    public List<ClassRoomEntity> getClassRoomEntityList() {
+        return classRoomEntityList;
     }
 }

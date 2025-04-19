@@ -52,7 +52,7 @@ public class ClassRoomServiceImpl implements ClassRoomService {
     public ClassRoomDTO updateClassRoom(ClassRoomDTO classRoomDTO) {
         final Optional<ClassRoomEntity> classRoomEntityOptional = classRoomRepository.findById(classRoomDTO.getClassRoomId());
         if (classRoomEntityOptional.isPresent()) {
-            classRoomRepository.save(ClassRoomDTOEntityMapper.map(classRoomDTO));
+            classRoomRepository.save(ClassRoomDTOEntityMapper.map(classRoomDTO, null));
             return classRoomDTO;
         }
         return null;
@@ -60,7 +60,7 @@ public class ClassRoomServiceImpl implements ClassRoomService {
 
     @Override
     public ClassRoomDTO createClassRoom(ClassRoomDTO classRoomDTO) {
-        final ClassRoomEntity classRoomEntity = classRoomRepository.save(ClassRoomDTOEntityMapper.map(classRoomDTO));
+        final ClassRoomEntity classRoomEntity = classRoomRepository.save(ClassRoomDTOEntityMapper.map(classRoomDTO ,null));
         return ClassRoomDTOEntityMapper.map(classRoomEntity);
     }
 }
