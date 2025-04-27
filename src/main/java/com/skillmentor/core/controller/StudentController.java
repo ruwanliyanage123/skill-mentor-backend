@@ -46,19 +46,19 @@ public class StudentController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<StudentDTO> getStudentById(@PathVariable("id") @Min(10) @Max(15) Integer id){
+    public ResponseEntity<StudentDTO> getStudentById(@PathVariable("id") Integer id){
         final StudentDTO studentDTO = studentService.getStudentById(id);
         return new ResponseEntity<>(studentDTO, HttpStatus.OK);
     }
 
     @PostMapping()
-    public ResponseEntity<StudentDTO> createStudent(@RequestBody @Valid StudentDTO studentDTO){
+    public ResponseEntity<StudentDTO> createStudent(@RequestBody StudentDTO studentDTO){
         final StudentDTO student = studentService.createStudent(studentDTO);
         return new ResponseEntity<>(student, HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<StudentDTO> updateStudent(@RequestBody @Valid StudentDTO studentDTO){
+    public ResponseEntity<StudentDTO> updateStudent(@RequestBody  StudentDTO studentDTO){
         final StudentDTO student = studentService.updateStudent(studentDTO);
         return new ResponseEntity<>(student, HttpStatus.OK);
     }
