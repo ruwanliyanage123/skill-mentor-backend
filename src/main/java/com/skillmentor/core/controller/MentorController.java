@@ -1,7 +1,6 @@
 package com.skillmentor.core.controller;
 
 import com.skillmentor.core.dto.MentorDTO;
-import com.skillmentor.core.exception.MentorNotFoundException;
 import com.skillmentor.core.service.MentorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -35,17 +34,11 @@ public class MentorController {
     @GetMapping("/{id}")
     public ResponseEntity<MentorDTO> findMentorById(@PathVariable Integer id) {
         MentorDTO mentorDTO = mentorService.findMentorById(id);
-        if (mentorDTO == null) {
-            throw new MentorNotFoundException("Mentor with ID " + id + " not found");
-        }
         return ResponseEntity.ok(mentorDTO);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<MentorDTO> deleteMentorById(@PathVariable Integer id) {
-        if (id <1) {
-            throw new MentorNotFoundException("Cannot delete, Mentor with ID " + id + " not found");
-        }
         MentorDTO mentorDTO = mentorService.deleteMentorById(id);
         return ResponseEntity.ok(mentorDTO);
     }

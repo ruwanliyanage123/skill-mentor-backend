@@ -7,12 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class SkillMentorCoreApplication {
 
 	public static void main(String[] args) {
-		//todo: add @JsonPropery to the DTO
-		//todo: add validation properties
-		//todo: exception handling
-		//todo:
-		//todo:
-
 		SpringApplication.run(SkillMentorCoreApplication.class, args);
 	}
 
