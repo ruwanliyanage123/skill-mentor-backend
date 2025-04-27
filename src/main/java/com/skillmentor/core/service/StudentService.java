@@ -28,6 +28,8 @@ public interface StudentService {
             List<Integer> ages
     );
 
+    List<StudentDTO> getAllStudents();
+
     /**
      * Retrieves a student by their ID.
      *

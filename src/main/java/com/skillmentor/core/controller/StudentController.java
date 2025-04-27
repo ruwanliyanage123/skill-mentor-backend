@@ -27,15 +27,21 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
+//    @GetMapping()
+//    public ResponseEntity<List<StudentDTO>> getAllStudents(
+//            @RequestParam(required = false) List<String> firstNames,
+//            @RequestParam(required = false) List<String> lastNames,
+//            @RequestParam(required = false) List<String> emails,
+//            @RequestParam(required = false) List<String> phoneNumbers,
+//            @RequestParam(required = false) @Size(min = 18, max = 30) List<Integer> ages
+//    ) {
+//        final List<StudentDTO> studentDTOList = studentService.getAllStudents(firstNames, lastNames, emails, phoneNumbers, ages);
+//        return new ResponseEntity<>(studentDTOList, HttpStatus.OK);
+//    }
+
     @GetMapping()
-    public ResponseEntity<List<StudentDTO>> getAllStudents(
-            @RequestParam(required = false) List<String> firstNames,
-            @RequestParam(required = false) List<String> lastNames,
-            @RequestParam(required = false) List<String> emails,
-            @RequestParam(required = false) List<String> phoneNumbers,
-            @RequestParam(required = false) @Size(min = 18, max = 30) List<Integer> ages
-    ) {
-        final List<StudentDTO> studentDTOList = studentService.getAllStudents(firstNames, lastNames, emails, phoneNumbers, ages);
+    public ResponseEntity<List<StudentDTO>> getAllStudents() {
+        final List<StudentDTO> studentDTOList = studentService.getAllStudents();
         return new ResponseEntity<>(studentDTOList, HttpStatus.OK);
     }
 

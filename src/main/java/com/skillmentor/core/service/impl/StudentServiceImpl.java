@@ -18,6 +18,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public List<StudentDTO> getAllStudents() {
+        return null;
+    }
+
+    @Override
     public StudentDTO getStudentById(Integer studentId) {
         return null;
     }

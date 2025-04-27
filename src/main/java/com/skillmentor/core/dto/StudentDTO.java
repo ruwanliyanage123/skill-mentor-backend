@@ -1,10 +1,5 @@
 package com.skillmentor.core.dto;
 
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import org.springframework.lang.NonNull;
-
 public class StudentDTO {
     private Integer studentId;
     private String firstName;
