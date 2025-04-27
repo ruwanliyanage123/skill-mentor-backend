@@ -1,6 +1,5 @@
 package com.skillmentor.core.service.impl;
 
-import com.skillmentor.core.dao.StudentDAO;
 import com.skillmentor.core.dto.StudentDTO;
 import com.skillmentor.core.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +9,6 @@ import java.util.List;
 
 @Service
 public class StudentServiceImpl implements StudentService {
-    @Autowired
-    private StudentDAO studentDAO;
 
     public StudentServiceImpl() {
     }
@@ -33,11 +30,10 @@ public class StudentServiceImpl implements StudentService {
 
     @Override
     public StudentDTO createStudent(StudentDTO studentDTO) {
-        StudentDTO student = studentDAO.createStudent(studentDTO);
-        return student;
+        return null;
     }
 
     public StudentDTO updateStudent(StudentDTO studentDTO) {
-        return studentDAO.updateStudent(studentDTO);
+        return null;
     }
 }
